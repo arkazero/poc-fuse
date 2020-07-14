@@ -1,4 +1,4 @@
-# Spring Boot Camel Avianca
+# Spring Boot Camel
 
 This project is generate with archetype for redhat, the same allow you to create diferents options
 the general architecture will be describe in the next paragraphs.
