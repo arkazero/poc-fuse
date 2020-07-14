@@ -40,8 +40,8 @@ public class RestTokenRoute extends RouteBuilder{
 		Date now = new Date();
 		String strDate = sdfDate.format(now);
 		
-		String user = "U2FsdGVkX1+VC16nQ1/xH1d2V7hk6aXx3qoPawEyd337wQvckkv643YptgSVShDG";
-		String pass = "U2FsdGVkX1+e4b+gZbWHAgMtMnN6kGk2Cj+Cpx2dum6e59IriC2CJzqU/rR+z2UB02fGRijlpSBjJEsUvas06g==";
+		String user = "XXXXXXXXXXXXX";
+		String pass = "XXXXXXXXXXXXXXX";
 		
 		final String TARGET_WITH_AUTH = "http://servicios.devitech.com.co:8010/gopass/autenticacion" +
 	            "?authMethod=Basic&authUsername="+user+"&authPassword="+pass;
@@ -63,7 +63,7 @@ public class RestTokenRoute extends RouteBuilder{
 			.setHeader("cuerpoMensaje", simple("${body}"))
 			.setHeader("aplicacion", constant("GOPASS"))				
 			.setHeader("fecha",simple(strDate))
-			.setHeader("Authorization",constant("Basic VTJGc2RHVmtYMStWQzE2blExL3hIMWQyVjdoazZhWHgzcW9QYXdFeWQzMzd3UXZja2t2NjQzWXB0Z1NWU2hERzpVMkZzZEdWa1gxK2U0YitnWmJXSEFnTXRNbk42a0drMkNqK0NweDJkdW02ZTU5SXJpQzJDSnpxVS9yUit6MlVCMDJmR1JpamxwU0JqSkVzVXZhczA2Zz09"))
+			.setHeader("Authorization",constant("Basic XXXXXXXXXXXXXX"))
 			.setHeader(Exchange.HTTP_METHOD, constant("GET"))
 			.setHeader(Exchange.HTTP_URI, simple(TARGET_WITH_AUTH))
 			.setHeader(Exchange.CONTENT_TYPE, constant("application/json"))			
