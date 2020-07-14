@@ -1,0 +1,365 @@
+
+{
+  "options": [
+    {
+      "enabled": true,
+      "definition": {
+        "id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+      },
+      "inputs": {
+        "branchFilters": "[\"+refs/heads/*\"]",
+        "additionalFields": "{}"
+      }
+    },
+    {
+      "enabled": false,
+      "definition": {
+        "id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+      },
+      "inputs": {
+        "workItemType": "Task",
+        "assignToRequestor": "true",
+        "additionalFields": "{}"
+      }
+    }
+  ],
+  "variables": {
+    "mysecurefile": {
+      "value": "settings.xml",
+      "allowOverride": true
+    },
+    "occli": {
+      "value": null,
+      "isSecret": true
+    },
+    "system.debug": {
+      "value": "false",
+      "allowOverride": true
+    }
+  },
+  "variableGroups": [
+    {
+      "variables": {
+        "idServerAzureArtifacts": {
+          "value": "SAP"
+        },
+        "passwordAzureArtifacts": {
+          "value": null,
+          "isSecret": true
+        },
+        "urlAzureArtifacts": {
+          "value": "https://redhatvsts.pkgs.visualstudio.com/_packaging/SAP/maven/v1"
+        },
+        "usernameAzureArtifacts": {
+          "value": "redhatvsts"
+        }
+      },
+      "type": "Vsts",
+      "name": "AzureRegistrySettings",
+      "description": "It contains dynamic data for deploy in Azure Artifacts to Sap Repo",
+      "id": 439
+    }
+  ],
+  "properties": {},
+  "tags": [],
+  "_links": {
+    "self": {
+      "href": "https://redhatvsts.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/build/Definitions/1265?revision=5"
+    },
+    "web": {
+      "href": "https://redhatvsts.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_build/definition?definitionId=1265"
+    },
+    "editor": {
+      "href": "https://redhatvsts.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_build/designer?id=1265&_a=edit-build-definition"
+    },
+    "badge": {
+      "href": "https://redhatvsts.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/build/status/1265"
+    }
+  },
+  "buildNumberFormat": "$(date:yyyyMMdd)$(rev:.r)",
+  "jobAuthorizationScope": 1,
+  "jobTimeoutInMinutes": 60,
+  "jobCancelTimeoutInMinutes": 5,
+  "process": {
+    "phases": [
+      {
+        "steps": [
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": true,
+            "alwaysRun": false,
+            "displayName": "AzureArtifactsSettings",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "refName": "mysecurefile",
+            "task": {
+              "id": "2a6ca863-f2ce-4f4d-8bcb-15e64608ec4b",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "secureFile": "b40ed67a-1233-43e3-a064-1d38dd3ab742",
+              "retryCount": "5"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Replace tokens AzureArtifactsSettings",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "a8515ec8-7254-4ffd-912c-86772e2b5962",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "rootDirectory": "$(Agent.TempDirectory)",
+              "targetFiles": "**/*.xml",
+              "encoding": "auto",
+              "writeBOM": "true",
+              "actionOnMissing": "warn",
+              "keepToken": "false",
+              "tokenPrefix": "#{",
+              "tokenSuffix": "}#",
+              "emptyValue": "(empty)"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Replace Tokens in pom.xml",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "a8515ec8-7254-4ffd-912c-86772e2b5962",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "rootDirectory": "",
+              "targetFiles": "$(Parameters.targetFiles)",
+              "encoding": "auto",
+              "writeBOM": "true",
+              "actionOnMissing": "warn",
+              "keepToken": "false",
+              "tokenPrefix": "#{",
+              "tokenSuffix": "}#",
+              "emptyValue": "(empty)"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Maven Build",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "ac4ee482-65da-4485-a532-7b085873e532",
+              "versionSpec": "3.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "mavenPOMFile": "$(Parameters.mavenPOMFile)",
+              "goals": "deploy",
+              "options": " --settings $(mysecurefile.secureFilePath) -DCONFIG_LOCATION=$(system.defaultworkingdirectory)/src/main/resources -Dfabric8.skip",
+              "publishJUnitResults": "true",
+              "testResultsFiles": "**/surefire-reports/TEST-*.xml",
+              "testRunTitle": "",
+              "codeCoverageTool": "JaCoCo",
+              "classFilter": "",
+              "classFilesDirectories": "",
+              "srcDirectories": "",
+              "failIfCoverageEmpty": "false",
+              "javaHomeSelection": "JDKVersion",
+              "jdkVersion": "default",
+              "jdkUserInputPath": "",
+              "jdkArchitecture": "x64",
+              "mavenVersionSelection": "Default",
+              "mavenPath": "",
+              "mavenSetM2Home": "false",
+              "mavenOpts": "-Xmx1024m",
+              "mavenFeedAuthenticate": "true",
+              "skipEffectivePom": "false",
+              "sqAnalysisEnabled": "false",
+              "sqMavenPluginVersionChoice": "latest",
+              "checkstyleAnalysisEnabled": "false",
+              "pmdAnalysisEnabled": "false",
+              "findbugsAnalysisEnabled": "false"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": true,
+            "displayName": "Copy Files to: $(build.artifactstagingdirectory)",
+            "timeoutInMinutes": 0,
+            "condition": "succeededOrFailed()",
+            "task": {
+              "id": "5bfb729a-a7c8-4a78-a7c3-8d717bb7c13c",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "SourceFolder": "$(system.defaultworkingdirectory)",
+              "Contents": "**",
+              "TargetFolder": "$(build.artifactstagingdirectory)",
+              "CleanTargetFolder": "false",
+              "OverWrite": "false",
+              "flattenFolders": "false",
+              "preserveTimestamp": "false"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": true,
+            "displayName": "Publish Artifact: drop",
+            "timeoutInMinutes": 0,
+            "condition": "succeededOrFailed()",
+            "task": {
+              "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "PathtoPublish": "$(build.artifactstagingdirectory)",
+              "ArtifactName": "drop",
+              "ArtifactType": "Container",
+              "TargetPath": "",
+              "Parallel": "false",
+              "ParallelCount": "8",
+              "FileCopyOptions": ""
+            }
+          }
+        ],
+        "name": "Agent job 1",
+        "refName": "Job_1",
+        "condition": "succeeded()",
+        "target": {
+          "queue": {
+            "_links": {
+              "self": {
+                "href": "https://redhatvsts.visualstudio.com/_apis/build/Queues/1221"
+              }
+            },
+            "id": 1221,
+            "url": "https://redhatvsts.visualstudio.com/_apis/build/Queues/1221",
+            "pool": null
+          },
+          "executionOptions": {
+            "type": 0
+          },
+          "allowScriptsAuthAccessOption": false,
+          "type": 1
+        },
+        "jobAuthorizationScope": 1
+      }
+    ],
+    "type": 1
+  },
+  "repository": {
+    "properties": {
+      "cleanOptions": "0",
+      "labelSources": "0",
+      "labelSourcesFormat": "$(build.buildNumber)",
+      "reportBuildStatus": "true",
+      "gitLfsSupport": "false",
+      "skipSyncSource": "false",
+      "checkoutNestedSubmodules": "false",
+      "fetchDepth": "0"
+    },
+    "id": "d3f85243-74be-4333-a93d-b30a6a0ac9d4",
+    "type": "TfsGit",
+    "name": "<<NOMBRE_REPOSITORIO>>",
+    "url": "https://redhatvsts.visualstudio.com/SAP/_git/<<NOMBRE_REPOSITORIO>>",
+    "defaultBranch": "refs/heads/Dev",
+    "clean": "false",
+    "checkoutSubmodules": false
+  },
+  "processParameters": {
+    "inputs": [
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "mavenPOMFile",
+        "label": "Maven POM file",
+        "defaultValue": "pom.xml",
+        "required": true,
+        "type": "filePath",
+        "helpMarkDown": ""
+      },
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "targetFiles",
+        "label": "Target files",
+        "defaultValue": "**/*.xml",
+        "required": true,
+        "type": "multiLine",
+        "helpMarkDown": "Absolute or relative comma or newline-separated paths to the files to replace tokens. Wildcards can be used.<br/>Eg: `**/*.config` for all config files in all sub folders.",
+        "visibleRule": "",
+        "groupName": ""
+      }
+    ]
+  },
+  "quality": 1,
+  "authoredBy": {
+    "displayName": "Diego Andres Lozada Forero",
+    "url": "https://spsprodcus3.vssps.visualstudio.com/A02a0d101-5333-44fe-8ef7-4b4596b6cb0b/_apis/Identities/85ffee36-6851-67dc-92f3-5b26b9121947",
+    "_links": {
+      "avatar": {
+        "href": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+      }
+    },
+    "id": "85ffee36-6851-67dc-92f3-5b26b9121947",
+    "uniqueName": "andres.lozada@redhat.com",
+    "imageUrl": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3",
+    "descriptor": "aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+  },
+  "drafts": [],
+  "queue": {
+    "_links": {
+      "self": {
+        "href": "https://redhatvsts.visualstudio.com/_apis/build/Queues/1221"
+      }
+    },
+    "id": 1221,
+    "name": "Integration_linux_Dev-Test",
+    "url": "https://redhatvsts.visualstudio.com/_apis/build/Queues/1221",
+    "pool": {
+      "id": 57,
+      "name": "Integration_linux_Dev-Test"
+    }
+  },
+  "id": 1265,
+  "name": "SAP-CI-ws-terpel-eds",
+  "url": "https://redhatvsts.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/build/Definitions/1265?revision=5",
+  "uri": "vstfs:///Build/Definition/1265",
+  "path": "\\OpenShift\\<<PROJECT-FOLDER>>",
+  "type": 2,
+  "queueStatus": 0,
+  "revision": 5,
+  "createdDate": "2020-02-27T14:50:00.950Z",
+  "project": {
+    "id": "3312eeb5-2d40-4811-a992-99fc45d952fd",
+    "name": "SAP",
+    "description": "Proyecto de implementación del nuevo ERP que reemplazará a Oracle.  En este proyecto se tendran los equipos que  trbajarán requerimientos transversales a todos los dominios de negocio.",
+    "url": "https://redhatvsts.visualstudio.com/_apis/projects/3312eeb5-2d40-4811-a992-99fc45d952fd",
+    "state": 1,
+    "revision": 1936,
+    "visibility": 0,
+    "lastUpdateTime": "2019-11-27T14:30:21.263Z"
+  }
+}

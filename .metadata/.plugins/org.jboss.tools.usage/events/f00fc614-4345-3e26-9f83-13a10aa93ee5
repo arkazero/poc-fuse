@@ -1,0 +1,11 @@
+#Tue Jun 30 13:34:27 COT 2020
+vl=0 \= failed, 1 \= successful
+l=Server Runtime ID
+ct=server
+d=1593542067308
+c=1
+cmp=server
+a=new
+cl=org.jboss.tools.openshift.cdk.server.type.v32
+v=3.9.101
+s=0

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server hostname="localhost" id="Container Development Environment 3.2+" id-set="true" minishift.file.location="/usr/bin/minishift" minishift.home.location="/home/juan.garcia/.minishift" name="Container Development Environment 3.2+" org.jboss.tools.openshift.internal.cdk.server.core.adapter.CDKServer.hypervisor="kvm" org.jboss.tools.openshift.internal.cdk.server.core.adapter.CDKServer.passCredentials="true" runtime-id="Container Development Environment 3.2+" server-type="org.jboss.tools.openshift.cdk.server.type.v32" server-type-id="org.jboss.tools.openshift.cdk.server.type.v32" start-timeout="1800" stop-timeout="900" timestamp="0"/>
+</servers>

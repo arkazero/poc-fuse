@@ -1,0 +1,959 @@
+{
+  "source": 2,
+  "revision": 30,
+  "description": null,
+  "createdBy": {
+    "displayName": "Diego Andres Lozada Forero",
+    "url": "https://spsprodcus3.vssps.visualstudio.com/A02a0d101-5333-44fe-8ef7-4b4596b6cb0b/_apis/Identities/85ffee36-6851-67dc-92f3-5b26b9121947",
+    "_links": {
+      "avatar": {
+        "href": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+      }
+    },
+    "id": "85ffee36-6851-67dc-92f3-5b26b9121947",
+    "uniqueName": "andres.lozada@redhat.com",
+    "imageUrl": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3",
+    "descriptor": "aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+  },
+  "createdOn": "2020-02-25T15:02:05.880Z",
+  "modifiedBy": {
+    "displayName": "Diego Andres Lozada Forero",
+    "url": "https://spsprodcus3.vssps.visualstudio.com/A02a0d101-5333-44fe-8ef7-4b4596b6cb0b/_apis/Identities/85ffee36-6851-67dc-92f3-5b26b9121947",
+    "_links": {
+      "avatar": {
+        "href": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+      }
+    },
+    "id": "85ffee36-6851-67dc-92f3-5b26b9121947",
+    "uniqueName": "andres.lozada@redhat.com",
+    "imageUrl": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3",
+    "descriptor": "aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+  },
+  "modifiedOn": "2020-02-27T15:11:08.823Z",
+  "isDeleted": false,
+  "lastRelease": {
+    "id": 162,
+    "name": "Release-19",
+    "artifacts": [],
+    "_links": {},
+    "description": "",
+    "releaseDefinition": {
+      "id": 3,
+      "projectReference": null,
+      "_links": {}
+    },
+    "createdOn": "2020-02-27T15:13:23.570Z",
+    "createdBy": {
+      "displayName": "Diego Andres Lozada Forero",
+      "url": "https://spsprodcus3.vssps.visualstudio.com/A02a0d101-5333-44fe-8ef7-4b4596b6cb0b/_apis/Identities/85ffee36-6851-67dc-92f3-5b26b9121947",
+      "_links": {
+        "avatar": {
+          "href": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+        }
+      },
+      "id": "85ffee36-6851-67dc-92f3-5b26b9121947",
+      "uniqueName": "andres.lozada@redhat.com",
+      "imageUrl": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3",
+      "descriptor": "aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+    }
+  },
+  "variables": {
+    "APPLICATION_NAME": {
+      "value": "ws-terpel-eds"
+    },
+    "CONFIG_LOCATION": {
+      "value": "/data"
+    },
+    "NAMESPACE": {
+      "value": "<<NAMESPACE>>"
+    },
+    "OC_REGISTRY_DEV": {
+      "value": "docker-registry-default.appsdev.avtest.online"
+    },
+    "OC_REGISTRY_QA": {
+      "value": "docker-registry-default.appsqa.avtest.online"
+    },
+    "OC_TOKEN_DEV": {
+      "value": null,
+      "isSecret": true
+    },
+    "OC_TOKEN_QA": {
+      "value": null,
+      "isSecret": true
+    },
+    "OC_URL_DEV": {
+      "value": "https://azlbopsmasterdev.avtest.online"
+    },
+    "OC_URL_QA": {
+      "value": "https://azlbopsmasterqa.avtest.online"
+    },
+    "SPRING_CONFIG_LOCATION": {
+      "value": "/data/application.properties"
+    },
+    "validateConfigMap": {
+      "value": "none"
+    }
+  },
+  "variableGroups": [],
+  "environments": [
+    {
+      "id": 4,
+      "name": "Dev",
+      "rank": 1,
+      "owner": {
+        "displayName": "Diego Andres Lozada Forero",
+        "url": "https://spsprodcus3.vssps.visualstudio.com/A02a0d101-5333-44fe-8ef7-4b4596b6cb0b/_apis/Identities/85ffee36-6851-67dc-92f3-5b26b9121947",
+        "_links": {
+          "avatar": {
+            "href": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+          }
+        },
+        "id": "85ffee36-6851-67dc-92f3-5b26b9121947",
+        "uniqueName": "andres.lozada@redhat.com",
+        "imageUrl": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3",
+        "descriptor": "aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+      },
+      "variables": {
+        "NOTIFICATION_PASS": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "NOTIFICATION_USER": {
+          "value": "YWRtaW4="
+        },
+        "APPLICATION_VERSION": {
+          "value": "1.0-SNAPSHOT"
+        },
+        "ERRCONNECTMESSAGE_MAILCONFIG": {
+          "value": "No se pudo obtener conexi&oacute;n al host de destino"
+        },
+        "ERRNOTIFICATION_MAILCONFIG": {
+          "value": "No se ha podido entregar el mensaje a la cola de notificaci&oacute;n."
+        },
+        "ERRSQLSENTENCE_MAILCONFIG": {
+          "value": "Se obtuvo un error en la ejecuci&oacute;n de la sentencia de inserci&oacute;n"
+        },
+        "ERRSTRUCTURE_MAILCONFIG": {
+          "value": "La validaci&oacute;n de la estructura del mensaje arroj&oacute; una alerta."
+        },
+        "FROM_MAILCONFIG": {
+          "value": "notificacionesfuse@redhat.com"
+        },
+        "CC_MAILCONFIG": {
+          "value": ""
+        },
+        "HOST_NOTIFICATION": {
+          "value": "broker-amq-headless.aa-npci-sap-transversal.svc.cluster.local"
+        },
+        "MAIL_NOTIFICATION_FROM": {
+          "value": "notificacionesfuse@redhat.com"
+        },
+        "QUEUE_NOTIFICATION": {
+          "value": "MAIL_NOTIFICATION"
+        },
+        "PORT_NOTIFICATION": {
+          "value": "61616"
+        },
+        "SERVICENAME_MAILCONFIG": {
+          "value": "CVS Number ADM"
+        },
+        "SERVICETYPE_MAILCONFIG": {
+          "value": "Critico"
+        },
+        "SUBJECT_MAILCONFIG": {
+          "value": "Error en servicio ws-invoiceadmcvs"
+        },
+        "TEMPLATE_MAILCONFIG": {
+          "value": "generic"
+        },
+        "MAIL_NOTIFICATION_SUBJECT": {
+          "value": "Error en Servicio ws-terpel-eds"
+        },
+        "MAIL_NOTIFICATION_TO": {
+          "value": "receptor@hotmail.com"
+        },
+        "TO_MAILCONFIG": {
+          "value": "jamezqui@redhat.com,diana.martinez.subavh@redhat.com,andres.lozada@redhat.com"
+        },
+        "TZ": {
+          "value": "America/Bogota"
+        },
+        "SERVICENAME_CONSUMER_REST": {
+          "value": "/numeroadm"
+        },
+        "APIPATH_CONSUMER_REST": {
+          "value": "api-doc"
+        },
+        "APIBASEPATH_CONSUMER_REST": {
+          "value": "ws-terpel-eds"
+        },
+        "SERVICENAME_CONSUMER_REST": {
+          "value": "ws-terpel-eds"
+        },
+        "SERVICEID_CONSUMER_REST": {
+          "value": "ws-terpel-eds-id"
+        },
+        "HOST_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "CONTEXT_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "SERVICE_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "METHOD_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "TYPE_PRODUCER_REST": {
+          "value": "YWRtaW4="
+        }
+      },
+      "variableGroups": [],
+      "preDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 10
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 1
+        }
+      },
+      "deployStep": {
+        "id": 13
+      },
+      "postDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 14
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 2
+        }
+      },
+      "deployPhases": [
+        {
+          "deploymentInput": {
+            "parallelExecution": {
+              "parallelExecutionType": 0
+            },
+            "agentSpecification": null,
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": {
+              "downloadInputs": []
+            },
+            "queueId": 1221,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": 1,
+          "name": "Agent job",
+          "refName": null,
+          "workflowTasks": [
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Login OCP DEV",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "./oc login  --token $(OC_TOKEN_DEV) $(OC_URL_DEV) --insecure-skip-tls-verify",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Select OCP Project DEV",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "./oc project $(NAMESPACE)",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Select OCP Project Delete ConfigMap",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": true,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "./oc create configmap temporal-config --from-file=$(system.defaultworkingdirectory)/$(Release.PrimaryArtifactSourceAlias)/drop/src/main/resources;\n./oc get cm temporal-config -o yaml > $(system.defaultworkingdirectory)/ws-project.yml;\nsed -i '/  name: temporal-config/c\\  name: $(APPLICATION_NAME)-config' $(system.defaultworkingdirectory)/ws-project.yml\n./oc delete cm temporal-config",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Select OCP Project ConfigMap",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeededOrFailed()",
+              "inputs": {
+                "script": "./oc replace --force -f $(system.defaultworkingdirectory)/ws-project.yml;\nrm -rf  $(system.defaultworkingdirectory)/ws-project.yml",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "a8515ec8-7254-4ffd-912c-86772e2b5962",
+              "version": "2.*",
+              "name": "Replace tokens in **/*.yml",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "rootDirectory": "$(System.DefaultWorkingDirectory)/$(Release.PrimaryArtifactSourceAlias)/drop",
+                "targetFiles": "**/*.yml",
+                "encoding": "auto",
+                "writeBOM": "true",
+                "actionOnMissing": "warn",
+                "keepToken": "false",
+                "tokenPrefix": "#{",
+                "tokenSuffix": "}#",
+                "emptyValue": "(empty)"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "ac4ee482-65da-4485-a532-7b085873e532",
+              "version": "3.*",
+              "name": "Maven Release Fabric8",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "mavenPOMFile": "$(System.DefaultWorkingDirectory)/$(Release.PrimaryArtifactSourceAlias)/drop/pom.xml",
+                "goals": "fabric8:deploy",
+                "options": "-DCONFIG_LOCATION=$(system.defaultworkingdirectory)/$(Release.PrimaryArtifactSourceAlias)/drop/src/main/resources",
+                "publishJUnitResults": "true",
+                "testResultsFiles": "**/surefire-reports/TEST-*.xml",
+                "testRunTitle": "",
+                "codeCoverageTool": "None",
+                "classFilter": "",
+                "classFilesDirectories": "",
+                "srcDirectories": "",
+                "failIfCoverageEmpty": "false",
+                "javaHomeSelection": "JDKVersion",
+                "jdkVersion": "default",
+                "jdkUserInputPath": "",
+                "jdkArchitecture": "x64",
+                "mavenVersionSelection": "Default",
+                "mavenPath": "",
+                "mavenSetM2Home": "false",
+                "mavenOpts": "-Xmx1024m",
+                "mavenFeedAuthenticate": "false",
+                "skipEffectivePom": "false",
+                "sqAnalysisEnabled": "false",
+                "sqMavenPluginVersionChoice": "latest",
+                "checkstyleAnalysisEnabled": "false",
+                "pmdAnalysisEnabled": "false",
+                "findbugsAnalysisEnabled": "false"
+              }
+            }
+          ]
+        }
+      ],
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": true,
+        "badgeEnabled": false,
+        "autoLinkWorkItems": false,
+        "pullRequestDeploymentEnabled": false
+      },
+      "demands": [],
+      "conditions": [
+        {
+          "name": "ReleaseStarted",
+          "conditionType": 1,
+          "value": ""
+        }
+      ],
+      "executionPolicy": {
+        "concurrencyCount": 1,
+        "queueDepthCount": 0
+      },
+      "schedules": [],
+      "currentRelease": {
+        "id": 162,
+        "url": "https://redhatvsts.vsrm.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/Release/releases/162",
+        "_links": {}
+      },
+      "retentionPolicy": {
+        "daysToKeep": 30,
+        "releasesToKeep": 3,
+        "retainBuild": true
+      },
+      "processParameters": {},
+      "properties": {
+        "BoardsEnvironmentType": {
+          "$opentype": "System.String",
+          "$openvalue": "unmapped"
+        },
+        "LinkBoardsWorkItems": {
+          "$opentype": "System.String",
+          "$openvalue": "False"
+        }
+      },
+      "preDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "environmentTriggers": [],
+      "badgeUrl": "https://redhatvsts.vsrm.visualstudio.com/_apis/public/Release/badge/3312eeb5-2d40-4811-a992-99fc45d952fd/3/4"
+    },
+    {
+      "id": 5,
+      "name": "QA",
+      "rank": 2,
+      "owner": {
+        "displayName": "Diego Andres Lozada Forero",
+        "url": "https://spsprodcus3.vssps.visualstudio.com/A02a0d101-5333-44fe-8ef7-4b4596b6cb0b/_apis/Identities/85ffee36-6851-67dc-92f3-5b26b9121947",
+        "_links": {
+          "avatar": {
+            "href": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+          }
+        },
+        "id": "85ffee36-6851-67dc-92f3-5b26b9121947",
+        "uniqueName": "andres.lozada@redhat.com",
+        "imageUrl": "https://redhatvsts.visualstudio.com/_apis/GraphProfile/MemberAvatars/aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3",
+        "descriptor": "aad.ODVmZmVlMzYtNjg1MS03N2RjLTkyZjMtNWIyNmI5MTIxOTQ3"
+      },
+      "variables": {
+        "NOTIFICATION_PASS": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "NOTIFICATION_USER": {
+          "value": "YWRtaW4="
+        },
+        "APPLICATION_VERSION": {
+          "value": "1.0-SNAPSHOT"
+        },
+        "ERRCONNECTMESSAGE_MAILCONFIG": {
+          "value": "No se pudo obtener conexi&oacute;n al host de destino"
+        },
+        "ERRNOTIFICATION_MAILCONFIG": {
+          "value": "No se ha podido entregar el mensaje a la cola de notificaci&oacute;n."
+        },
+        "ERRSQLSENTENCE_MAILCONFIG": {
+          "value": "Se obtuvo un error en la ejecuci&oacute;n de la sentencia de inserci&oacute;n"
+        },
+        "ERRSTRUCTURE_MAILCONFIG": {
+          "value": "La validaci&oacute;n de la estructura del mensaje arroj&oacute; una alerta."
+        },
+        "FROM_MAILCONFIG": {
+          "value": "notificacionesfuse@redhat.com"
+        },
+        "HOST_NOTIFICATION": {
+          "value": "broker-amq-headless.aa-npci-sap-transversal.svc.cluster.local"
+        },
+        "MAIL_NOTIFICATION_FROM": {
+          "value": "notificacionesfuse@redhat.com"
+        },
+        "QUEUE_NOTIFICATION": {
+          "value": "MAIL_NOTIFICATION"
+        },
+        "PORT_NOTIFICATION": {
+          "value": "61616"
+        },
+        "SERVICENAME_MAILCONFIG": {
+          "value": "CVS Number ADM"
+        },
+        "SERVICETYPE_MAILCONFIG": {
+          "value": "Critico"
+        },
+        "SUBJECT_MAILCONFIG": {
+          "value": "Error en servicio ws-invoiceadmcvs"
+        },
+        "TEMPLATE_MAILCONFIG": {
+          "value": "generic"
+        },
+        "MAIL_NOTIFICATION_SUBJECT": {
+          "value": "Error en Servicio ws-terpel-eds"
+        },
+        "MAIL_NOTIFICATION_TO": {
+          "value": "receptor@hotmail.com"
+        },
+        "TO_MAILCONFIG": {
+          "value": "jamezqui@redhat.com,diana.martinez.subavh@redhat.com,andres.lozada@redhat.com"
+        },
+        "TZ": {
+          "value": "America/Bogota"
+        },
+        "SERVICENAME_CONSUMER_REST": {
+          "value": "/numeroadm"
+        },
+        "APIPATH_CONSUMER_REST": {
+          "value": "vim"
+        },
+        "APIBASEPATH_CONSUMER_REST": {
+          "value": "api-doc"
+        },
+        "SERVICENAME_CONSUMER_REST": {
+          "value": "ws-terpel-eds"
+        },
+        "SERVICEID_CONSUMER_REST": {
+          "value": "ws-terpel-eds-id"
+        },
+        "HOST_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "CONTEXT_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "SERVICE_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "METHOD_PRODUCER_REST": {
+          "value": "cjNkaDR0X2FtcV9hZG1pbg=="
+        },
+        "TYPE_PRODUCER_REST": {
+          "value": "YWRtaW4="
+        }
+      },
+      "variableGroups": [],
+      "preDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 17
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 1
+        }
+      },
+      "deployStep": {
+        "id": 12
+      },
+      "postDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 15
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 2
+        }
+      },
+      "deployPhases": [
+        {
+          "deploymentInput": {
+            "parallelExecution": {
+              "parallelExecutionType": 0
+            },
+            "agentSpecification": null,
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": {
+              "downloadInputs": []
+            },
+            "queueId": 1221,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": 1,
+          "name": "Agent job",
+          "refName": null,
+          "workflowTasks": [
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Login OCP DEV",
+              "refName": "",
+              "enabled": false,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "./oc login  --token $(OC_TOKEN_DEV) $(OC_URL_DEV) --insecure-skip-tls-verify",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Login OCP QA",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "./oc login  --token $(OC_TOKEN_QA) $(OC_URL_QA) --insecure-skip-tls-verify",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Login Registry DEV",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "docker login -u admin -p $(OC_TOKEN_DEV) docker-registry-default.appsdev.avtest.online",
+                "workingDirectory": "",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Login Registry QA",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "docker login -u admin -p $(OC_TOKEN_QA) docker-registry-default.appsqa.avtest.online",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "Select OCP Project QA",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script": "./oc project $(NAMESPACE)",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "OCP Project Delete ConfigMap",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": true,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "script":"./oc create configmap temporal-config --from-file=$(system.defaultworkingdirectory)/$(Release.PrimaryArtifactSourceAlias)/drop/src/main/resources;\n./oc get cm temporal-config -o yaml > $(system.defaultworkingdirectory)/ws-project.yml;\nsed -i '/metadata/,$d' $(system.defaultworkingdirectory)/ws-project.yml;\nsed -i '$ a metadata:\\n name: $(APPLICATION_NAME)-config\\nlabels:\\n    app: $(APPLICATION_NAME)\\n' $(system.defaultworkingdirectory)/ws-project.yml;\n./oc delete cm temporal-config",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "OCP Project ConfigMap",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeededOrFailed()",
+              "inputs": {
+                "script": "./oc apply -f $(system.defaultworkingdirectory)/ws-project.yml;\n",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "a8515ec8-7254-4ffd-912c-86772e2b5962",
+              "version": "2.*",
+              "name": "Replace tokens in **/*.yml",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "rootDirectory": "$(System.DefaultWorkingDirectory)/$(Release.PrimaryArtifactSourceAlias)/drop",
+                "targetFiles": "**/*.yml",
+                "encoding": "auto",
+                "writeBOM": "true",
+                "actionOnMissing": "warn",
+                "keepToken": "false",
+                "tokenPrefix": "#{",
+                "tokenSuffix": "}#",
+                "emptyValue": "(empty)"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "OCP Update Secret",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeededOrFailed()",
+              "inputs": {
+                "script": "./oc apply -f $(system.defaultworkingdirectory)/$(Release.PrimaryArtifactSourceAlias)/drop/src/main/fabric8/$(APPLICATION_NAME)-secret.yml",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "OCP Deploy Template",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeededOrFailed()",
+              "inputs": {
+                "script": "./oc process -f $(system.defaultworkingdirectory)/$(Release.PrimaryArtifactSourceAlias)/drop/src/main/template/templateESB.yml |./oc apply -f -",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+              "version": "2.*",
+              "name": "OCP Copy Image",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeededOrFailed()",
+              "inputs": {
+                "script": "./oc image mirror docker-registry-default.appsdev.avtest.online/$(NAMESPACE)/$(APPLICATION_NAME):latest docker-registry-default.appsqa.avtest.online/$(NAMESPACE)/$(APPLICATION_NAME):latest --insecure=true",
+                "workingDirectory": "/home/adminagent/oc-client",
+                "failOnStderr": "false"
+              }
+            }
+          ]
+        }
+      ],
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": true,
+        "badgeEnabled": false,
+        "autoLinkWorkItems": false,
+        "pullRequestDeploymentEnabled": false
+      },
+      "demands": [],
+      "conditions": [
+        {
+          "name": "Dev",
+          "conditionType": 2,
+          "value": "4"
+        }
+      ],
+      "executionPolicy": {
+        "concurrencyCount": 1,
+        "queueDepthCount": 0
+      },
+      "schedules": [],
+      "currentRelease": {
+        "id": 162,
+        "url": "https://redhatvsts.vsrm.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/Release/releases/162",
+        "_links": {}
+      },
+      "retentionPolicy": {
+        "daysToKeep": 30,
+        "releasesToKeep": 3,
+        "retainBuild": true
+      },
+      "processParameters": {},
+      "properties": {
+        "BoardsEnvironmentType": {
+          "$opentype": "System.String",
+          "$openvalue": "unmapped"
+        },
+        "LinkBoardsWorkItems": {
+          "$opentype": "System.String",
+          "$openvalue": "False"
+        }
+      },
+      "preDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "environmentTriggers": [],
+      "badgeUrl": "https://redhatvsts.vsrm.visualstudio.com/_apis/public/Release/badge/3312eeb5-2d40-4811-a992-99fc45d952fd/3/5"
+    }
+  ],
+  "triggers": [],
+  "releaseNameFormat": "Release-$(rev:r)",
+  "tags": [],
+  "properties": {
+    "DefinitionCreationSource": {
+      "$opentype": "System.String",
+      "$openvalue": "ReleaseImport"
+    },
+    "IntegrateBoardsWorkItems": {
+      "$opentype": "System.String",
+      "$openvalue": "False"
+    },
+    "IntegrateJiraWorkItems": {
+      "$opentype": "System.String",
+      "$openvalue": "false"
+    }
+  },
+  "id": 3,
+  "name": "SAP-CD-ws-terpel-eds",
+  "path": "\\",
+  "projectReference": null,
+  "url": "https://redhatvsts.vsrm.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/Release/definitions/3",
+  "_links": {
+    "self": {
+      "href": "https://redhatvsts.vsrm.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_apis/Release/definitions/3"
+    },
+    "web": {
+      "href": "https://redhatvsts.visualstudio.com/3312eeb5-2d40-4811-a992-99fc45d952fd/_release?definitionId=3"
+    }
+  }
+}

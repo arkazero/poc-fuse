@@ -1,0 +1,15 @@
+{
+ "codigoEDS": $!exchange.properties.user,
+ "isla": $!exchange.properties.user,
+ "surtidor": $!exchange.properties.user,
+ "cara": $!exchange.properties.user,
+ "placa": $!exchange.properties.user,
+ "tagGopass": $!exchange.properties.user,
+ "identificadorVentaTerpel": $!exchange.properties.user,
+ "identificacionPromotor": $!exchange.properties.user,
+ "valor": $!exchange.properties.user,
+ "identificadorTransaccionGoPass": $!exchange.properties.user,
+ "estado": $!exchange.properties.user,
+ "fecha": $!exchange.properties.user
+}
+
