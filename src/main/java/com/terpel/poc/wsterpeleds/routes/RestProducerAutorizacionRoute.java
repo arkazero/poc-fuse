@@ -14,7 +14,7 @@ import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.model.Station;
 
 @Component
-public class RestProducerAutorizacionRoute extends RouteBuilder{
+public class RestProducerAutorizacionRoute extends RouteBuilder {
 
 	@Override
 	public void configure()  throws Exception {

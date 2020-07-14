@@ -7,11 +7,11 @@ import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.http.conn.HttpHostConnectException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.microsoft.applicationinsights.core.dependencies.http.conn.HttpHostConnectException;
 import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 import com.terpel.poc.wsterpeleds.model.EDS;
 import com.terpel.poc.wsterpeleds.model.Request;
@@ -20,7 +20,7 @@ import com.terpel.poc.wsterpeleds.model.Station;
 import com.terpel.poc.wsterpeleds.model.Token;
 
 @Component
-public class RestTokenRoute extends ConfigurationRoute{
+public class RestTokenRoute extends RouteBuilder{
 	
 	private static final String AUTH_ERROR_MSG = "Se ha producido un error en la autenticación";
 	private Logger log = LoggerFactory.getLogger(RestTokenRoute.class);
@@ -28,7 +28,7 @@ public class RestTokenRoute extends ConfigurationRoute{
 	@Override
 	public void configure()  throws Exception {
 		
-		super.configure();
+//		super.configure();
 		JacksonDataFormat format = new JacksonDataFormat(Token.class);
 		JacksonDataFormat format_station = new JacksonDataFormat(EDS.class);
 		JacksonDataFormat response = new JacksonDataFormat(Response.class);
@@ -48,11 +48,11 @@ public class RestTokenRoute extends ConfigurationRoute{
 		onException(HttpHostConnectException.class)
 			.handled(true)
 			.log(LoggingLevel.ERROR, log, "Ha ocurrido una excepcion HttpHostConnectException: " + exceptionMessage())
-	        .setHeader("CamelHttpResponseCode", simple("400"))
+	        .setHeader("CamelHttpResponseCode", constant("400"))
 	        .setHeader("codigoRespuesta", constant("FAILED"))
 	        .setHeader("mensajeRespuesta", constant(AUTH_ERROR_MSG))
-	        .bean("transformations", "buildResponse")
-	        .marshal(response)
+//	        .bean("transformations", "buildResponse")
+//	        .marshal(response)
 		.end();
 		
 		from("direct:definirTokenProducer").routeId("wsterpeleds_rest_token")

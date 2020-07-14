@@ -23,8 +23,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import com.terpel.poc.wsterpeleds.transformations.FailureErrorProcessor;
-import com.terpel.poc.wsterpeleds.properties.AmqNotificationProducer;
+
 
 @Component
 public class ConfigurationRoute extends RouteBuilder {

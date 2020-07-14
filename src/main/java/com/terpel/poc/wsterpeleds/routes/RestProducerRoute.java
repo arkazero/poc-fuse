@@ -40,14 +40,14 @@ import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 import com.terpel.poc.wsterpeleds.properties.MailProperties;
 
 @Component
-public class RestProducerRoute extends ConfigurationRoute {
+public class RestProducerRoute extends RouteBuilder {
     
 	@Autowired
 	private RestProducer restConfig;
 	
 	@Override
 	public void configure()  throws Exception {
-	   super.configure();
+	   //super.configure();
 	   
 	   onException(SocketTimeoutException.class).handled(true)
 		    .maximumRedeliveries(3)

@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.microsoft.localforwarder.library.inputs.contracts.Request;
 import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 import com.terpel.poc.wsterpeleds.model.CustomException;
+import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.model.Response;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ import org.springframework.jms.UncategorizedJmsException;
 
 
 @Component
-public class TransformationRoute extends ConfigurationRoute {
+public class TransformationRoute extends RouteBuilder {
 	
 	@Value("${headersValidationService}")
 	private String headersValidationService;
@@ -34,7 +34,7 @@ public class TransformationRoute extends ConfigurationRoute {
 		
 	public void configure()  throws Exception {
 		
-		super.configure();
+		//super.configure();
 		
 		JacksonDataFormat request = new JacksonDataFormat(Request.class);
 		JacksonDataFormat response = new JacksonDataFormat(Response.class);
@@ -45,8 +45,9 @@ public class TransformationRoute extends ConfigurationRoute {
         .setHeader("CamelHttpResponseCode", simple("400"))
         .setHeader("codigoRespuesta", constant("FAILED"))
         .setHeader("mensajeRespuesta", constant(AUTH_ERROR_MSG))
-        .bean("transformations", "buildResponse")
-        .marshal(response);
+//        .bean("transformations", "buildResponse")
+//        .marshal(response)
+        ;
 	
 		onException(ConnectException.class)
 			.handled(true)
@@ -54,8 +55,9 @@ public class TransformationRoute extends ConfigurationRoute {
 	        .setHeader("CamelHttpResponseCode", simple("400"))
 	        .setHeader("codigoRespuesta", constant("FAILED"))
 	        .setHeader("mensajeRespuesta", constant(AUTH_ERROR_MSG))
-	        .bean("transformations", "buildResponse")
-	        .marshal(response);
+//	        .bean("transformations", "buildResponse")
+//	        .marshal(response)
+	        ;
 		
 		onException(CustomException.class)
 			.handled(true)
@@ -63,8 +65,9 @@ public class TransformationRoute extends ConfigurationRoute {
 	        .setHeader("CamelHttpResponseCode", simple("200"))
 	        .setHeader("codigoRespuesta", constant("OK"))
 	        .setHeader("mensajeRespuesta", exceptionMessage())
-	        .bean("transformations", "buildResponse")	        
-	        .marshal(response);
+//	        .bean("transformations", "buildResponse")	        
+//	        .marshal(response)
+	        ;
 
 		onException(JsonParseException.class, InvalidFormatException.class, UncategorizedJmsException.class)
 	        .handled(true)
@@ -72,8 +75,9 @@ public class TransformationRoute extends ConfigurationRoute {
 	        .setHeader("CamelHttpResponseCode", simple("400"))
 	        .setHeader("codigoRespuesta", constant("FAILED"))
 	        .setHeader("mensajeRespuesta", constant(AUTH_ERROR_MSG))
-	        .bean("transformations", "buildResponse")
-	        .marshal(response);
+//	        .bean("transformations", "buildResponse")
+//	        .marshal(response)
+	        ;
 	
 		onException(BeanValidationException.class)
 			.handled(true)
@@ -81,8 +85,9 @@ public class TransformationRoute extends ConfigurationRoute {
 			.setHeader("CamelHttpResponseCode", simple("200"))
 	        .setHeader("codigoRespuesta", constant("OK"))
 	        .setHeader("mensajeRespuesta", constant(AUTH_ERROR_MSG))
-	        .bean("transformations", "buildResponse")	        
-	        .marshal(response);
+//	        .bean("transformations", "buildResponse")	        
+//	        .marshal(response)
+	        ;
 						
 		from("direct:orquestador").routeId("wsterpeleds_orquestador")
 			.to("direct:restProducerEDS")     

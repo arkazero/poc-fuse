@@ -6,21 +6,22 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 import com.terpel.poc.wsterpeleds.model.EDS;
 import com.terpel.poc.wsterpeleds.model.Order;
 import com.terpel.poc.wsterpeleds.model.Request;
+import com.terpel.poc.wsterpeleds.model.Station;
 import com.terpel.poc.wsterpeleds.properties.RestProducer;
 
 @Component
-public class RestProducerEDSRoute extends  ConfigurationRoute {
+public class RestProducerEDSRoute extends RouteBuilder{
 
 	@Autowired
 	private RestProducer restConfig;
 
 	@Override
 	public void configure()  throws Exception {
-		super.configure();
+		//super.configure();
+		JacksonDataFormat st_format = new JacksonDataFormat(Station.class);
 		JacksonDataFormat format = new JacksonDataFormat(Request.class);
 		JacksonDataFormat format_eds = new JacksonDataFormat(EDS.class);
 		format_eds.useList();

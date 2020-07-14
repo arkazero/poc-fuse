@@ -28,7 +28,7 @@ import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 
 
 @Component
-public class RestConsumerRoute extends ConfigurationRoute {
+public class RestConsumerRoute extends RouteBuilder{
     
 	@Autowired
 	private RestConsumer restConfig;
@@ -36,7 +36,7 @@ public class RestConsumerRoute extends ConfigurationRoute {
     @Override
     public void configure()  throws Exception {
 
-    	super.configure();
+    	//super.configure();
     	
         restConfiguration()
 	       .component("servlet")
