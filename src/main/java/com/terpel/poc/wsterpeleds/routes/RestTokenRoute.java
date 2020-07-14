@@ -18,6 +18,7 @@ import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.model.Response;
 import com.terpel.poc.wsterpeleds.model.Station;	
 import com.terpel.poc.wsterpeleds.model.Token;
+import com.terpel.poc.wsterpeleds.transformations.BuildResponse;
 
 @Component
 public class RestTokenRoute extends RouteBuilder{
@@ -50,9 +51,11 @@ public class RestTokenRoute extends RouteBuilder{
 			.log(LoggingLevel.ERROR, log, "Ha ocurrido una excepcion HttpHostConnectException: " + exceptionMessage())
 	        .setHeader("CamelHttpResponseCode", constant("400"))
 	        .setHeader("codigoRespuesta", constant("FAILED"))
-	        .setHeader("mensajeRespuesta", constant(AUTH_ERROR_MSG))
-//	        .bean("transformations", "buildResponse")
-//	        .marshal(response)
+	        .setHeader("mensajeRespuesta",exceptionMessage())
+	        .setBody(simple("${headers.CamelHttpResponseCode} , ${headers.codigoRespuesta} , ${headers.mensajeRespuesta}"))
+	        //.bean(BuildResponse.class)
+	        //.process("buildResponse")
+	        .marshal(response)
 		.end();
 		
 		from("direct:definirTokenProducer").routeId("wsterpeleds_rest_token")

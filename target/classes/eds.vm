@@ -1,0 +1,16 @@
+[{
+   "_id": "$!body[0]._id",
+   "idEds": "$!body[0].idEds",
+   "ip": "$!body[0].ip",
+   "nombre": "$!body[0].nombre",
+   "ciudad": "$!body[0].ciudad",
+   "departamento": "$!body[0].departamento",
+   "ventas": "$!body[0].ventas",
+   "tipo": "$!body[0].tipo",
+   "__v": $!body[0].__v,
+   "isla": "",
+   "cara": "$!headers.cara",
+   "surtidor": "$!headers.surtidor" 
+   
+}]
+

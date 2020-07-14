@@ -25,8 +25,8 @@ import org.springframework.jms.UncategorizedJmsException;
 @Component
 public class TransformationRoute extends RouteBuilder {
 	
-	@Value("${headersValidationService}")
-	private String headersValidationService;
+//	@Value("${headersValidationService}")
+//	private String headersValidationService;
 	
 	private static final String SUCCESS_RESPONSE = "direct:buildSuccessResponse";
 	private static final String AUTH_ERROR_MSG = "Se ha producido un error en la autenticación";

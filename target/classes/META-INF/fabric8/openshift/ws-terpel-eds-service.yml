@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    fabric8.io/git-commit: f56bf9b3636352882b5f39aa2ba7e568182413c8
+    fabric8.io/git-branch: master
+    fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
+    prometheus.io/port: "9779"
+    prometheus.io/scrape: "true"
+  labels:
+    expose: "true"
+    app: ws-terpel-eds
+    provider: fabric8
+    version: 1.0-SNAPSHOT
+    group: com.terpel.poc
+  name: ws-terpel-eds
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: ws-terpel-eds
+    provider: fabric8
+    group: com.terpel.poc
