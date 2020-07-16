@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 import com.terpel.poc.wsterpeleds.model.CustomException;
 import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.model.Response;

@@ -24,8 +24,6 @@ import org.springframework.stereotype.Component;
 import com.terpel.poc.wsterpeleds.model.Order;
 import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.properties.RestConsumer;
-import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
-
 
 @Component
 public class RestConsumerRoute extends RouteBuilder{

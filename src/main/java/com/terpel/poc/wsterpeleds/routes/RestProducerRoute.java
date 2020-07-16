@@ -36,8 +36,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.terpel.poc.wsterpeleds.properties.RestProducer;
-import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
-import com.terpel.poc.wsterpeleds.properties.MailProperties;
 
 @Component
 public class RestProducerRoute extends RouteBuilder {

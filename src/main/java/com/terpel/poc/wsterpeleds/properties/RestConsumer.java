@@ -20,7 +20,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@PropertySource("file:///${CONFIG_LOCATION}/rest_base.properties")
+//@PropertySource("file:///${CONFIG_LOCATION}/rest_base.properties")
 @ConfigurationProperties(prefix = "ws-terpel-eds.rest")
 public class RestConsumer {
 	
