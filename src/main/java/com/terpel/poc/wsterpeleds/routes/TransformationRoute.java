@@ -18,7 +18,9 @@ import com.terpel.poc.wsterpeleds.model.CustomException;
 import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.model.Response;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.jms.UncategorizedJmsException;
 
 
@@ -27,6 +29,9 @@ public class TransformationRoute extends RouteBuilder {
 	
 //	@Value("${headersValidationService}")
 //	private String headersValidationService;
+	
+	@Autowired
+	private Environment env;
 	
 	private static final String SUCCESS_RESPONSE = "direct:buildSuccessResponse";
 	private static final String AUTH_ERROR_MSG = "Se ha producido un error en la autenticación";
@@ -90,11 +95,12 @@ public class TransformationRoute extends RouteBuilder {
 	        ;
 						
 		from("direct:orquestador").routeId("wsterpeleds_orquestador")
-			.to("direct:restProducerEDS")     
-
-			.to("direct:definirTokenProducer")			
-
-	    	.to("direct:restProducerAutorizacion")
+			.log("Datos traido desde un configMap: "+ env.getProperty("saludo"))
+//			.to("direct:restProducerEDS")     
+//
+//			.to("direct:definirTokenProducer")			
+//
+//	    	.to("direct:restProducerAutorizacion")
 		.end();
 	}
 }

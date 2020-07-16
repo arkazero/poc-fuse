@@ -10,6 +10,7 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.http.conn.HttpHostConnectException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,9 @@ public class RestTokenRoute extends RouteBuilder{
 	private static final String AUTH_ERROR_MSG = "Se ha producido un error en la autenticación";
 	private Logger log = LoggerFactory.getLogger(RestTokenRoute.class);
 	
-	
+	@Autowired
+	private Environment env;
+
 	@Override
 	public void configure()  throws Exception {
 		
@@ -42,8 +45,8 @@ public class RestTokenRoute extends RouteBuilder{
 		Date now = new Date();
 		String strDate = sdfDate.format(now);
 		
-		String user = "XXXXXXXXXXXXX";
-		String pass = "XXXXXXXXXXXXXXX";
+		String user = env.getProperty("auth_user");
+		String pass = env.getProperty("auth_pass");
 		
 		final String TARGET_WITH_AUTH = "http://servicios.devitech.com.co:8010/gopass/autenticacion" +
 	            "?authMethod=Basic&authUsername="+user+"&authPassword="+pass;
@@ -61,7 +64,7 @@ public class RestTokenRoute extends RouteBuilder{
 		.end();
 		
 		from("direct:definirTokenProducer").routeId("wsterpeleds_rest_token")
-			
+			.log("Datos de autenticacion: "+ user)
 			.setHeader("cuerpoMensaje", simple("${body}"))
 			.setHeader("aplicacion", constant("GOPASS"))				
 			.setHeader("fecha",simple(strDate))

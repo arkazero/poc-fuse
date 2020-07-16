@@ -30,8 +30,8 @@ import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
 @Component
 public class RestConsumerRoute extends RouteBuilder{
     
-	@Autowired
-	private RestConsumer restConfig;
+//	@Autowired
+//	private RestConsumer restConfig;
 	
     @Override
     public void configure()  throws Exception {
@@ -40,13 +40,13 @@ public class RestConsumerRoute extends RouteBuilder{
     	
         restConfiguration()
 	       .component("servlet")
-	       .apiContextPath(restConfig.getApiPath())
-	       .apiProperty("api.title", restConfig.getApiTitle())
-	       .apiProperty("api.version", restConfig.getApiVersion())
-	       .apiProperty("base.path", restConfig.getApiBasePath())
+	       .apiContextPath("/api-doc")
+	       .apiProperty("api.title", "ws-terpel-eds-api")
+	       .apiProperty("api.version", "1.0")
+	       .apiProperty("base.path", "/api-doc")
 	       .apiProperty("cors", "true");
 
-        rest(restConfig.getServiceName())
+        rest("/ServiceOrder")
         .post()
         	.type(Request.class)        	        	
         	.to("direct:orquestador");
