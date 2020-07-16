@@ -16,7 +16,7 @@ items:
   kind: Service
   metadata:
     annotations:
-      fabric8.io/git-commit: f56bf9b3636352882b5f39aa2ba7e568182413c8
+      fabric8.io/git-commit: 032f44b479d1f8aa589e04b6d40ba823a5ee9577
       fabric8.io/git-branch: master
       fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
       prometheus.io/port: "9779"
@@ -42,7 +42,7 @@ items:
   kind: DeploymentConfig
   metadata:
     annotations:
-      fabric8.io/git-commit: f56bf9b3636352882b5f39aa2ba7e568182413c8
+      fabric8.io/git-commit: 032f44b479d1f8aa589e04b6d40ba823a5ee9577
       fabric8.io/git-branch: master
       fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
     labels:
@@ -65,7 +65,7 @@ items:
     template:
       metadata:
         annotations:
-          fabric8.io/git-commit: f56bf9b3636352882b5f39aa2ba7e568182413c8
+          fabric8.io/git-commit: 032f44b479d1f8aa589e04b6d40ba823a5ee9577
           fabric8.io/git-branch: master
           fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
         labels:

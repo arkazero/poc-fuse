@@ -10,6 +10,7 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.http.conn.HttpHostConnectException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.terpel.poc.wsterpeleds.configurator.ConfigurationRoute;
@@ -25,7 +26,8 @@ public class RestTokenRoute extends RouteBuilder{
 	
 	private static final String AUTH_ERROR_MSG = "Se ha producido un error en la autenticación";
 	private Logger log = LoggerFactory.getLogger(RestTokenRoute.class);
-
+	
+	
 	@Override
 	public void configure()  throws Exception {
 		
