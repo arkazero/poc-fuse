@@ -79,8 +79,8 @@ public class RestTokenRoute extends RouteBuilder{
 			.unmarshal(format_station)		
 			.to("bean-validator://x")		
 			.log("Cuerpo RESTTOKEN: ${body}")
-			.setHeader("CamelVelocityResourceUri",simple("{{TEMPLATE_AUTORIZACION}}"))			
-			.to("velocity:dummy?loaderCache=false")			
+			//.setHeader("CamelVelocityResourceUri",simple("{{TEMPLATE_AUTORIZACION}}"))			
+			//.to("velocity:dummy?loaderCache=false")			
 		.end();
 		
 	}

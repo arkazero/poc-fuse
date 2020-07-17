@@ -3,20 +3,10 @@ apiVersion: v1
 kind: List
 items:
 - apiVersion: v1
-  kind: Secret
-  metadata:
-    labels:
-      app: ws-terpel-eds
-      group: com.terpel.poc
-      provider: fabric8
-      version: 1.0-SNAPSHOT
-    name: ws-terpel-eds-secret
-  type: Opaque
-- apiVersion: v1
   kind: Service
   metadata:
     annotations:
-      fabric8.io/git-commit: 032f44b479d1f8aa589e04b6d40ba823a5ee9577
+      fabric8.io/git-commit: 906f03aa01a0904a2771fce8c7ca1c897b8aed57
       fabric8.io/git-branch: master
       fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
       prometheus.io/port: "9779"
@@ -38,11 +28,12 @@ items:
       app: ws-terpel-eds
       provider: fabric8
       group: com.terpel.poc
+    type: LoadBalancer
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
     annotations:
-      fabric8.io/git-commit: 032f44b479d1f8aa589e04b6d40ba823a5ee9577
+      fabric8.io/git-commit: 906f03aa01a0904a2771fce8c7ca1c897b8aed57
       fabric8.io/git-branch: master
       fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
     labels:
@@ -65,7 +56,7 @@ items:
     template:
       metadata:
         annotations:
-          fabric8.io/git-commit: 032f44b479d1f8aa589e04b6d40ba823a5ee9577
+          fabric8.io/git-commit: 906f03aa01a0904a2771fce8c7ca1c897b8aed57
           fabric8.io/git-branch: master
           fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
         labels:
@@ -76,48 +67,27 @@ items:
       spec:
         containers:
         - env:
-          - name: CONFIG_LOCATION
-          - name: SPRING_CONFIG_LOCATION
-          - name: TZ
-          - name: HOST_NOTIFICATION
-          - name: PORT_NOTIFICATION
-            value: '#{PORT_NOTIFICATION}#'
-          - name: QUEUE_NOTIFICATION
-          - name: FROM_MAILCONFIG
-          - name: TO_MAILCONFIG
-          - name: CC_MAILCONFIG
-          - name: BCC_MAILCONFIG
-          - name: SUBJECT_MAILCONFIG
-          - name: TEMPLATE_MAILCONFIG
-          - name: SERVICENAME_MAILCONFIG
-          - name: SERVICETYPE_MAILCONFIG
-          - name: ERRCONNECTMESSAGE_MAILCONFIG
-          - name: ERRSQLSENTENCE_MAILCONFIG
-          - name: ERRSTRUCTURE_MAILCONFIG
-          - name: ERRNOTIFICATION_MAILCONFIG
-          - name: SERVICENAME_CONSUMER_REST
-          - name: APIPATH_CONSUMER_REST
-          - name: APIBASEPATH_CONSUMER_REST
-          - name: APIBASEPATH_CONSUMER_REST
-          - name: HOST_PRODUCER_REST
-          - name: CONTEXT_PRODUCER_REST
-          - name: SERVICE_PRODUCER_REST
-          - name: METHOD_PRODUCER_REST
-          - name: TYPE_PRODUCER_REST
+          - name: SPRING_APPLICATION_JSON
+            value: '{"server":{"undertow":{"io-threads":10, "worker-threads":20 }}}'
+          - name: JAVA_OPTIONS
+            value: -Xms512m -Xmx1024m
           - name: KUBERNETES_NAMESPACE
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
           envFrom:
-          - prefix: ws-terpel-eds.
-            secretRef:
-              name: ws-terpel-eds-secret
-          image: poc/ws-terpel-eds:latest
+          - configMapRef:
+              name: poc-configmap
+          image: ws-terpel-eds:latest
           imagePullPolicy: IfNotPresent
           livenessProbe:
-            initialDelaySeconds: 60
-            tcpSocket:
+            failureThreshold: 3
+            httpGet:
+              path: /health
               port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 180
+            successThreshold: 1
           name: spring-boot
           ports:
           - containerPort: 8080
@@ -130,28 +100,25 @@ items:
             name: jolokia
             protocol: TCP
           readinessProbe:
-            initialDelaySeconds: 60
-            tcpSocket:
+            failureThreshold: 3
+            httpGet:
+              path: /health
               port: 8080
-          resources:
-            limits:
-              cpu: "1.0"
-              memory: 256Mi
-            requests:
-              cpu: 50m
-              memory: 256Mi
+              scheme: HTTP
+            initialDelaySeconds: 10
+            successThreshold: 1
           securityContext:
             privileged: false
-          volumeMounts:
-          - mountPath: /data
-            name: volume-ws-terpel-eds
-        volumes:
-        - configMap:
-            defaultMode: 420
-            name: ws-terpel-eds-config
-          name: volume-ws-terpel-eds
     triggers:
     - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - spring-boot
+        from:
+          kind: ImageStreamTag
+          name: ws-terpel-eds:latest
+      type: ImageChange
 - apiVersion: v1
   kind: Route
   metadata:

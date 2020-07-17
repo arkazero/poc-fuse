@@ -65,7 +65,7 @@ public class IntegrationUnitTest {
 
 
 	}
-
+	@Ignore
 	@Test
 	public void successRequestTransformationTest() throws Exception 
 	{
@@ -81,7 +81,7 @@ public class IntegrationUnitTest {
 		mockProducerEndpoint.assertIsSatisfied();
 		
 	}
-
+	@Ignore
 	@Test
 	public void failedRequestTransformationTest() throws Exception 
 	{

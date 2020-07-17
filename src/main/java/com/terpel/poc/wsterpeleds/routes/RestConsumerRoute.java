@@ -17,6 +17,8 @@ package com.terpel.poc.wsterpeleds.routes;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -30,22 +32,25 @@ public class RestConsumerRoute extends RouteBuilder{
     
 //	@Autowired
 //	private RestConsumer restConfig;
+	private Logger log = LoggerFactory.getLogger(TransformationRoute.class);
 	
+	private String contextPath = "";
     @Override
     public void configure()  throws Exception {
-
-    	//super.configure();
-    	
+    	log.error("::::::::::::::Ingresando a la ruta::::::::::::");
+    	//super.configure();    	
         restConfiguration()
 	       .component("servlet")
+	       .port("8080")
+	       .bindingMode(RestBindingMode.auto)	       
+	       .contextPath(contextPath)
 	       .apiContextPath("/api-doc")
-	       .apiProperty("api.title", "ws-terpel-eds-api")
-	       .apiProperty("api.version", "1.0")
-	       .apiProperty("base.path", "/api-doc")
+	       .apiProperty("api.title", "ws-terpel-eds")
+	       .apiProperty("api.version", "1.0")	       
 	       .apiProperty("cors", "true");
-
-        rest("/ServiceOrder")
-        .post()
+    	
+        rest()
+        .post("/ServiceOrder")
         	.type(Request.class)        	        	
         	.to("direct:orquestador");
     }

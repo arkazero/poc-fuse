@@ -1,92 +1,13 @@
 spec:
-  resources:
-    limits:
-      cpu: "100m" 
-      memory: "1Gi"
-  replicas: 1
   template:
     spec:
       containers:
-        - 
-          resources:
-            requests:
-              cpu: 50m
-              memory: 256Mi
-            limits:
-              cpu: "1.0"
-              memory: 256Mi
-          livenessProbe:
-            initialDelaySeconds: 60
-            tcpSocket:
-              port: 8080
-          readinessProbe:
-            initialDelaySeconds: 60
-            tcpSocket:
-              port: 8080
-          env:
-          - name: CONFIG_LOCATION
-            value: #{CONFIG_LOCATION}#
-          - name: SPRING_CONFIG_LOCATION
-            value: #{SPRING_CONFIG_LOCATION}#
-          - name: TZ
-            value: #{TZ}#
-          - name: HOST_NOTIFICATION
-            value: #{HOST_NOTIFICATION}#
-          - name: PORT_NOTIFICATION
-            value: "#{PORT_NOTIFICATION}#"
-          - name: QUEUE_NOTIFICATION
-            value: #{QUEUE_NOTIFICATION}#
-          - name: FROM_MAILCONFIG
-            value: #{FROM_MAILCONFIG}#
-          - name: TO_MAILCONFIG
-            value: #{TO_MAILCONFIG}#
-          - name: CC_MAILCONFIG
-            value: #{CC_MAILCONFIG}# 
-          - name: BCC_MAILCONFIG
-            value: #{BCC_MAILCONFIG}# 
-          - name: SUBJECT_MAILCONFIG
-            value: #{SUBJECT_MAILCONFIG}#
-          - name: TEMPLATE_MAILCONFIG
-            value: #{TEMPLATE_MAILCONFIG}#
-          - name: SERVICENAME_MAILCONFIG
-            value: #{SERVICENAME_MAILCONFIG}#
-          - name: SERVICETYPE_MAILCONFIG
-            value: #{SERVICETYPE_MAILCONFIG}#
-          - name: ERRCONNECTMESSAGE_MAILCONFIG
-            value: #{ERRCONNECTMESSAGE_MAILCONFIG}#
-          - name: ERRSQLSENTENCE_MAILCONFIG
-            value: #{ERRSQLSENTENCE_MAILCONFIG}#
-          - name: ERRSTRUCTURE_MAILCONFIG
-            value: #{ERRSTRUCTURE_MAILCONFIG}#
-          - name: ERRNOTIFICATION_MAILCONFIG
-            value: #{ERRNOTIFICATION_MAILCONFIG}#
-          - name: SERVICENAME_CONSUMER_REST
-            value: #{SERVICENAME_CONSUMER_REST}#
-          - name: APIPATH_CONSUMER_REST
-            value: #{APIPATH_CONSUMER_REST}#
-          - name: APIBASEPATH_CONSUMER_REST
-            value: #{APIBASEPATH_CONSUMER_REST}#
-          - name: APIBASEPATH_CONSUMER_REST
-            value: #{APIBASEPATH_CONSUMER_REST}#
-          - name: HOST_PRODUCER_REST
-            value: #{HOST_PRODUCER_REST}# 
-          - name: CONTEXT_PRODUCER_REST
-            value: #{CONTEXT_PRODUCER_REST}#
-          - name: SERVICE_PRODUCER_REST
-            value: #{SERVICE_PRODUCER_REST}#
-          - name: METHOD_PRODUCER_REST
-            value: #{METHOD_PRODUCER_REST}# 
-          - name: TYPE_PRODUCER_REST
-            value: #{TYPE_PRODUCER_REST}# 
+        - env:
+            - name: SPRING_APPLICATION_JSON
+              value: '{"server":{"undertow":{"io-threads":10, "worker-threads":20 }}}'
+            - name: JAVA_OPTIONS
+              value: '-Xms512m -Xmx1024m'
           envFrom:
-            - prefix: ws-terpel-eds.
-              secretRef:
-                name: ws-terpel-eds-secret
-          volumeMounts:
-            - mountPath: /data
-              name: volume-ws-terpel-eds
-      volumes:
-        - configMap:
-            defaultMode: 420
-            name: ws-terpel-eds-config
-          name: volume-ws-terpel-eds
+            - configMapRef:
+                name: poc-configmap          
+          

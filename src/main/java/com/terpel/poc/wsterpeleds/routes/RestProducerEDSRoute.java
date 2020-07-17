@@ -46,8 +46,8 @@ public class RestProducerEDSRoute extends RouteBuilder{
 			.unmarshal(format_eds)			
 			.to("bean-validator://x")
 			.log("respuesta: ${body[0].ip}")
-			.setHeader("CamelVelocityResourceUri",simple("{{TEMPLATE_EDS}}"))
-			.to("velocity:dummy?loaderCache=false")
+			//.setHeader("CamelVelocityResourceUri",simple("{{TEMPLATE_EDS}}"))
+			//.to("velocity:dummy?loaderCache=false")
 			.log("respuesta template: ${body}")
 			.end();
 	}
