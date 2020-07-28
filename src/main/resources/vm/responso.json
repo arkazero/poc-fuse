@@ -1,0 +1,16 @@
+{
+  "Status":{
+    "statusCode":"500",
+    "serverStatusCode":null,
+    "severity":"Error",
+    "statusDesc":"Error Tecnico",
+    "AdditionalStatus":[
+      {
+        "statusCode":"500",
+        "serverStatusCode":null,
+        "severity":"Error",
+        "statusDesc":"${headers.error}"
+      }
+    ]
+  }
+}

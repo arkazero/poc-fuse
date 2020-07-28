@@ -31,6 +31,12 @@ public class TransformationRoute extends RouteBuilder {
 	
 	@Autowired
 	private Environment env;
+		
+	@Value("${application.saludo-desde-application}")
+	private String saludo_desde_application;
+	
+	@Value("${application.saludo-desde-application-cm}")
+	private String saludo_desde_application_cm;
 	
 	private static final String SUCCESS_RESPONSE = "direct:buildSuccessResponse";
 	private static final String AUTH_ERROR_MSG = "Se ha producido un error en la autenticación";
@@ -93,13 +99,13 @@ public class TransformationRoute extends RouteBuilder {
 //	        .marshal(response)
 	        ;
 						
-		from("direct:orquestador").routeId("wsterpeleds_orquestador")
-			.log("Datos traido desde un configMap: "+ env.getProperty("saludo"))
-//			.to("direct:restProducerEDS")     
+		from("direct:orquestador").routeId("wsterpeleds_orquestador")		
+			
+			.to("direct:restProducerEDS")     
+
+			.to("direct:definirTokenProducer")			
 //
-//			.to("direct:definirTokenProducer")			
-//
-//	    	.to("direct:restProducerAutorizacion")
+	    	.to("direct:restProducerAutorizacion")
 		.end();
 	}
 }

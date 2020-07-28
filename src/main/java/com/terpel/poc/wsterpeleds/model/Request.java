@@ -5,8 +5,8 @@ import javax.validation.constraints.NotNull;
 public class Request {
 	
 	private int idTransaccion;	
-	@NotNull(message = "idIDS cannot be null")
-	private String idDS;
+	@NotNull(message = "idEDS cannot be null")
+	private String idEDS;
 	private int idSurtidor;
 	private int idCara;
 	
@@ -17,11 +17,11 @@ public class Request {
 	public void setIdTransaccion(int idTransaccion) {
 		this.idTransaccion = idTransaccion;
 	}
-	public String getIdDS() {
-		return idDS;
+	public String getIdEDS() {
+		return idEDS;
 	}
-	public void setIdDS(String idDS) {
-		this.idDS = idDS;
+	public void setIdEDS(String idEDS) {
+		this.idEDS = idEDS;
 	}
 	public int getIdSurtidor() {
 		return idSurtidor;

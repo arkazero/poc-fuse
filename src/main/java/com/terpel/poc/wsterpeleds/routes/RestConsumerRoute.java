@@ -20,38 +20,40 @@ import org.apache.camel.model.rest.RestBindingMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.terpel.poc.wsterpeleds.model.Order;
+
 import com.terpel.poc.wsterpeleds.model.Request;
 import com.terpel.poc.wsterpeleds.properties.RestConsumer;
 
+
 @Component
+
 public class RestConsumerRoute extends RouteBuilder{
     
-//	@Autowired
-//	private RestConsumer restConfig;
-	private Logger log = LoggerFactory.getLogger(TransformationRoute.class);
+	@Autowired
+    private Environment env;
 	
-	private String contextPath = "";
+	private Logger logger = LoggerFactory.getLogger(RestConsumerRoute.class);
+	
     @Override
     public void configure()  throws Exception {
-    	log.error("::::::::::::::Ingresando a la ruta::::::::::::");
+
     	//super.configure();    	
-        restConfiguration()
+    	 restConfiguration()
 	       .component("servlet")
-	       .port("8080")
-	       .bindingMode(RestBindingMode.auto)	       
-	       .contextPath(contextPath)
-	       .apiContextPath("/api-doc")
-	       .apiProperty("api.title", "ws-terpel-eds")
-	       .apiProperty("api.version", "1.0")	       
+	       .bindingMode(RestBindingMode.json)
+	       .enableCORS(true)
+	       .apiContextPath(env.getProperty("apiPath"))	       
+	       .apiProperty("api.title", env.getProperty("apiTitle"))
+	       .apiProperty("api.version", env.getProperty("apiVersion"))
+	       .apiProperty("base.path", env.getProperty("apiBasePath"))	       
 	       .apiProperty("cors", "true");
-    	
-        rest()
-        .post("/ServiceOrder")
-        	.type(Request.class)        	        	
-        	.to("direct:orquestador");
+	       
+    	 rest("/ServiceOrder")	    	 
+	        .post()
+	        	.type(Request.class)        	        	
+	        	.to("direct:orquestador");
     }
 }

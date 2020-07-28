@@ -46,9 +46,9 @@ public class RestTokenRoute extends RouteBuilder{
 		
 		String user = env.getProperty("auth_user");
 		String pass = env.getProperty("auth_pass");
+		String token_auth = env.getProperty("token_auth");
 		
-		final String TARGET_WITH_AUTH = "http://servicios.devitech.com.co:8010/gopass/autenticacion" +
-	            "?authMethod=Basic&authUsername="+user+"&authPassword="+pass;
+		final String TARGET_WITH_AUTH = "https://f5.iot.devitech.com.co:8010/gopass/autenticacion";
 		
 		onException(HttpHostConnectException.class)
 			.handled(true)
@@ -64,23 +64,39 @@ public class RestTokenRoute extends RouteBuilder{
 		
 		from("direct:definirTokenProducer").routeId("wsterpeleds_rest_token")
 			.log("Datos de autenticacion: "+ user)
+			.log("Ingresando al token: ${body}")
 			.setHeader("cuerpoMensaje", simple("${body}"))
-			.setHeader("aplicacion", constant("GOPASS"))				
+			.setHeader("aplicacion", constant("OPEN_SF"))
+			.setHeader("identificadorDispositivo", constant("127.0.0.1"))	
 			.setHeader("fecha",simple(strDate))
-			.setHeader("Authorization",constant("Basic XXXXXXXXXXXXXX"))
+			.setHeader("Authorization",simple(token_auth))
+			.setHeader("authUsername",simple(user))
+			.setHeader("authPassword",simple(pass))
 			.setHeader(Exchange.HTTP_METHOD, constant("GET"))
 			.setHeader(Exchange.HTTP_URI, simple(TARGET_WITH_AUTH))
 			.setHeader(Exchange.CONTENT_TYPE, constant("application/json"))			
-			.to("http4://ConsumoToken")			
+			.log("Peticion Token ${headers.HTTP_URI}")
+			.setBody(constant(""))
+			.log("Token ${body}")
+			.to("https4://ConsumoToken")	
+			.convertBodyTo(String.class)
+			.log("Respuesta Token ${body}")
 			.unmarshal(format)	
-			.to("bean-validator://x")			
+			.to("bean-validator://x")
+			
 			.setHeader("token",simple("${body.data.autorizacion}"))
-			.setBody(simple("${headers.cuerpoMensaje}"))			
+			.log("Respuesta Token ${body.data.autorizacion}")
+			.setBody(simple("${headers.cuerpoMensaje}"))	
+			.log("Respuesta Token body original ${body}")
+			//.convertBodyTo(String.class)
+			
 			.unmarshal(format_station)		
 			.to("bean-validator://x")		
-			.log("Cuerpo RESTTOKEN: ${body}")
-			//.setHeader("CamelVelocityResourceUri",simple("{{TEMPLATE_AUTORIZACION}}"))			
-			//.to("velocity:dummy?loaderCache=false")			
+//			.log("Cuerpo RESTTOKEN: ${body}")
+//			.setHeader("CamelVelocityResourceUri",simple("{{TEMPLATE_AUTORIZACION}}"))			
+			//.to("velocity:dummy?loaderCache=false")
+			.to("velocity:vm/autorizacion.vm")
+			.log("Autorizacion ${body}")
 		.end();
 		
 	}

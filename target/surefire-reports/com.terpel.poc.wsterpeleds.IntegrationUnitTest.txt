@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.terpel.poc.wsterpeleds.IntegrationUnitTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 1.39 sec - in com.terpel.poc.wsterpeleds.IntegrationUnitTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 1.023 sec - in com.terpel.poc.wsterpeleds.IntegrationUnitTest

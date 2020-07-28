@@ -6,7 +6,7 @@ items:
   kind: Service
   metadata:
     annotations:
-      fabric8.io/git-commit: 906f03aa01a0904a2771fce8c7ca1c897b8aed57
+      fabric8.io/git-commit: 92bcbf94433c749892f859dfb109bdad87b07b08
       fabric8.io/git-branch: master
       fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
       prometheus.io/port: "9779"
@@ -33,7 +33,7 @@ items:
   kind: Deployment
   metadata:
     annotations:
-      fabric8.io/git-commit: 906f03aa01a0904a2771fce8c7ca1c897b8aed57
+      fabric8.io/git-commit: 92bcbf94433c749892f859dfb109bdad87b07b08
       fabric8.io/git-branch: master
       fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
     labels:
@@ -53,7 +53,7 @@ items:
     template:
       metadata:
         annotations:
-          fabric8.io/git-commit: 906f03aa01a0904a2771fce8c7ca1c897b8aed57
+          fabric8.io/git-commit: 92bcbf94433c749892f859dfb109bdad87b07b08
           fabric8.io/git-branch: master
           fabric8.io/git-url: https://github.com/arkazero/poc-fuse.git
         labels:
@@ -74,7 +74,7 @@ items:
                 fieldPath: metadata.namespace
           envFrom:
           - configMapRef:
-              name: poc-configmap
+              name: poc-terpel-configmap
           image: ws-terpel-eds:latest
           imagePullPolicy: IfNotPresent
           livenessProbe:
