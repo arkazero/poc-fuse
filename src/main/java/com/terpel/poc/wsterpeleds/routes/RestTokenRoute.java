@@ -86,7 +86,7 @@ public class RestTokenRoute extends RouteBuilder{
 			
 			.setHeader("token",simple("${body.data.autorizacion}"))
 			.log("Respuesta Token ${body.data.autorizacion}")
-			.setBody(simple("${headers.cuerpoMensaje}"))	
+			.setBody(simple("${headers.cuerpoMensaje}"))				
 			.log("Respuesta Token body original ${body}")
 			//.convertBodyTo(String.class)
 			

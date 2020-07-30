@@ -78,7 +78,7 @@
   </dependencyManagement>
   <dependencies>
   
-  		<!-- <dependency>
+  		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter-logging</artifactId>
 		</dependency>
@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-		</dependency> -->
+		</dependency>
 		
 		
 		
@@ -188,28 +188,7 @@
   </dependencies>
 
   <build>
-    <defaultGoal>spring-boot:run</defaultGoal>
-    <resources>
-		<resource>
-	 		<filtering>true</filtering>
-			<directory>src/main/resources/</directory>
-			<includes>
-	
-				<include>vm/eds.vm</include>
-				<include>vm/autorizacion.vm</include>
-				<include>vm/responso.json</include>
-				<!-- <include>templates/response.json</include>
-				<include>templates/velocity.properties</include> -->
-			</includes>
-		</resource>
-		<resource>
-			<filtering>true</filtering>
-			<directory>src/main/resources/${ambiente}/</directory>
-			<includes>
-				<include>application.properties</include>
-			</includes>
-		</resource>
-	</resources>
+    <defaultGoal>spring-boot:run</defaultGoal>    
 
     <plugins>
       <!-- Compiler plugin enforces Java 1.8 compatibility -->
